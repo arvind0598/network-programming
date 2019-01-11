@@ -1,0 +1,5 @@
+*.pdf
+*.txt
+server
+client
+*example/
