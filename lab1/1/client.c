@@ -35,7 +35,6 @@ int main() {
 			case 3: {
 				int *res = client_read_intarr(sockfd, arr_size);
 				SHOW(res, arr_size);
-				printf("\n");
 				break;
 			}
 

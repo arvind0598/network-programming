@@ -15,11 +15,18 @@
 
 #define PORT 5052
 #define BUFF_SIZE 100
-#define SHOW(a, n) for(int i = 0; i < n; i++) printf("%d ", a[i])
+#define SHOW(a, n) for(int i = 0; i < n; i++) printf("%d ", a[i]); printf("\n")
 #define SWAP(a,b) if(a!=b) {a^= b; b^=a; a^=b;}
 
 typedef struct sockaddr SA;
 typedef struct sockaddr_in SA_IN;
+
+// lab specific
+
+struct lab2_q2 {
+    int status;
+    int vowels[5];
+};
 
 // error handling
 

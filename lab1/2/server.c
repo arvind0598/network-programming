@@ -9,10 +9,21 @@ int is_palindrome(char *a) {
 	return 1;
 }
 
+void count_vowels(int *x, char *a) {
+	for(int i = 0; i < 5; i++) x[i] = 0;
+
+	int n = strlen(a);
+	for(int i = 0; i < n; i++) {
+		if(a[i] == 'a' || a[i] == 'A') x[0]++;
+		else if(a[i] == 'e' || a[i] == 'E') x[1]++;
+		else if(a[i] == 'i' || a[i] == 'I') x[2]++;
+		else if(a[i] == 'o' || a[i] == 'O') x[3]++;
+		else if(a[i] == 'u' || a[i] == 'U') x[4]++;
+	}
+}
+
 int main() {
 	char buffer[BUFF_SIZE];
-	char SUCCESS_MESSAGE[] = {"The string is a palindrome."};
-	char FAILURE_MESSAGE[] = {"The string is NOT a palindrome."};
 
 	int sockfd = socket_s(AF_INET, SOCK_DGRAM, 0);
 	SA_IN server = sa_server_default();
@@ -23,11 +34,16 @@ int main() {
 
 	while(1) {
 		udp_recv(sockfd, buffer, sizeof(buffer), 0, (SA*)&client, &client_len);
-		if(!strcmp(buffer, "stop")) break;
+		if(!strcmp(buffer, "halt")) break;
 		
-		if(is_palindrome(buffer)) strcpy(buffer, SUCCESS_MESSAGE);
-		else strcpy(buffer, FAILURE_MESSAGE);
-		udp_send(sockfd, buffer, sizeof(buffer), 0, (SA*)&client, sizeof(client));
+		struct lab2_q2 obj;
+		if(is_palindrome(buffer)) {
+			obj.status = strlen(buffer);
+			count_vowels(obj.vowels, buffer);
+		}
+		else obj.status = -1;
+
+		udp_send(sockfd, (const void*)&obj, sizeof(obj), 0, (SA*)&client, sizeof(client));
 	}
 
 	close(sockfd);
