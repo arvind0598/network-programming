@@ -14,7 +14,7 @@ int main() {
 		
 		if(!strcmp(buffer, "halt")) break;
 		
-		struct lab2_q2 obj;
+		struct lab1_q2 obj;
 		udp_recv(sockfd, (void*) &obj, sizeof(obj), 0, (SA*)&server, &server_len);
 		if(obj.status == -1) {
 			printf("The string is not a palindrome.\n");

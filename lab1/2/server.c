@@ -36,7 +36,7 @@ int main() {
 		udp_recv(sockfd, buffer, sizeof(buffer), 0, (SA*)&client, &client_len);
 		if(!strcmp(buffer, "halt")) break;
 		
-		struct lab2_q2 obj;
+		struct lab1_q2 obj;
 		if(is_palindrome(buffer)) {
 			obj.status = strlen(buffer);
 			count_vowels(obj.vowels, buffer);
