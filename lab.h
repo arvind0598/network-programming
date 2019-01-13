@@ -23,9 +23,15 @@ typedef struct sockaddr_in SA_IN;
 
 // lab specific
 
-struct lab2_q2 {
+struct lab1_q2 {
     int status;
     int vowels[5];
+};
+
+struct lab2_qa1 {
+    int length;
+    // alphabets lines spaces digits others
+    int data[5];
 };
 
 // error handling
@@ -34,7 +40,7 @@ void error();
 void error_c(int sockfd);
 void error_c2(int sockfd, int sockfd2);
 
-// saving time
+// safer functions
 
 int socket_s(int family, int type, int protocol);
 int bind_s(int sockfd, const SA *server, int size);
@@ -64,7 +70,14 @@ void server_write_int(int clientfd, int sockfd, int x);
 void server_write_str(int clientfd, int sockfd, char *buffer);/* 2 */
 void server_write_intarr(int clientfd, int sockfd, int *arr, int n);
 
-// udp
+// tcp generic functions
+
+void client_read(int sockfd, void *msg, int size);/* 2 */
+void client_write(int sockfd, const void *msg, int size);/* 2 */
+void server_read(int clientfd, int sockfd, void *msg, int size);/* 2 */
+void server_write(int clientfd, int sockfd, const void *msg, int size);/* 2 */
+
+// udp generic functions
 
 int udp_send(int sockfd, const void* msg, int len, int flags, const SA* to, int tolen);
 int udp_recv(int sockfd, void *msg, int len, int flags, SA* from, int *fromlen);
@@ -79,10 +92,9 @@ SA_IN sa_client_default();
 
 int *stdin_get_intarr(int n);
 void stdin_get_str(char *buffer);/* 2 */
+int value_of(char *str);/* 2 */
+int get_popen_result(char *command);/* 2 */
 
 // file handling
 
 int file_exists(char *filename);/* 2 */
-int search_in_file(char *filename, char *word);/* 2 */
-int replace_in_file(char *filename, char *old_word, char *new_word);/* 2 */
-int sort_file_ascii(char *filename);/* 2 */

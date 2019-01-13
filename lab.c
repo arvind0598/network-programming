@@ -175,40 +175,45 @@ int file_exists(char *filename) {
 	return file != NULL;
 }
 
-int search_in_file(char *filename, char *word) {
-	char command[BUFF_SIZE];
-	sprintf(command, "grep -o -i %s %s | wc -l", word, filename);
+int value_of(char *str) {
+	int count = 0;
+	int len = strlen(str);
+	for(int i = 0; i < len; i++) {
+		if(isdigit(str[i])) 
+			count = count * 10 + (str[i] - '0');
+		else break;
+	}
+	return count;
+}
 
+int get_popen_result(char *command) {
 	FILE *output = popen(command, "r");
 	if(output == NULL) return -1;
 
 	char result[10];
 	fgets(result, 10, output);
 
-	int count = 0;
-	for(int i = 0; i < 10; i++) {
-		if(isdigit(result[i])) 
-			count = count * 10 + (result[i] - '0');
-		else break;
-	}
-
+	int count = value_of(result);
 	pclose(output);
 	return count;
 }
 
-int replace_in_file(char *filename, char *old_word, char *new_word) {
-	int wordcount = search_in_file(filename, old_word);
-	if(wordcount < 1) return 0;
-	
-	char command[BUFF_SIZE];
-	sprintf(command, "sed -i 's/%s/%s/g' %s", old_word, new_word, filename);
-	system(command);
-	return 1;
+void client_read(int sockfd, void *msg, int size) {
+	int status = read(sockfd, msg, size);
+	if(status < 0) error_c(sockfd);
 }
 
-int sort_file_ascii(char *filename) {
-	char command[BUFF_SIZE];
-	sprintf(command, "cat %s | grep -o . | sort | tr -d '\n' > %s", filename, filename);
-	system(command);
-	return 1;
+void client_write(int sockfd, const void *msg, int size) {
+	int status = write(sockfd, msg, size);
+	if(status < 0) error_c(sockfd);
+}
+
+void server_read(int clientfd, int sockfd, void *msg, int size) {
+	int status = read(clientfd, msg, size);
+	if(status < 0) error_c2(clientfd, sockfd);
+}
+
+void server_write(int clientfd, int sockfd, const void *msg, int size) {
+	int status = write(clientfd, msg, size);
+	if(status < 0) error_c2(clientfd, sockfd);
 }
