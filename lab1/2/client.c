@@ -3,7 +3,7 @@
 int main() {
 	char buffer[BUFF_SIZE];
 
-	int sockfd = socket_s(AF_INET, SOCK_DGRAM, 0);
+	int sockfd = socket_udp_default();
 	SA_IN server = sa_client_default();
 	int server_len = sizeof(server);
 

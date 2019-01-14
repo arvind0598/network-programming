@@ -5,7 +5,7 @@ int main() {
 	SA_IN server= sa_client_default();
     int status = 0;
 
-	int sockfd = socket_s(AF_INET, SOCK_STREAM, 0);
+	int sockfd = socket_tcp_default();
 	connect_s(sockfd, (SA*)&server, sizeof(server));
 
 	printf("Enter file name.\n");

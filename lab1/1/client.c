@@ -4,7 +4,7 @@ int main() {
 	char buffer[BUFF_SIZE];
 	SA_IN server= sa_client_default();
 
-	int sockfd = socket_s(AF_INET, SOCK_STREAM, 0);
+	int sockfd = socket_tcp_default();
 	connect_s(sockfd, (SA*)&server, sizeof(server));
 
 	printf("Enter size of array.\n");

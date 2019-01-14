@@ -35,7 +35,7 @@ int main() {
 	char buffer[BUFF_SIZE];
 	SA_IN server = sa_server_default();
 
-	int sockfd = socket_s(AF_INET, SOCK_STREAM, 0);
+	int sockfd = socket_tcp_default();
 	bind_s(sockfd, (SA*)&server, sizeof(server));
 	listen_s(sockfd, 1);
 

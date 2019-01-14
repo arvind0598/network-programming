@@ -72,6 +72,7 @@ void server_write_intarr(int clientfd, int sockfd, int *arr, int n);
 
 // tcp generic functions
 
+int socket_tcp_default();
 void client_read(int sockfd, void *msg, int size);/* 2 */
 void client_write(int sockfd, const void *msg, int size);/* 2 */
 void server_read(int clientfd, int sockfd, void *msg, int size);/* 2 */
@@ -79,6 +80,7 @@ void server_write(int clientfd, int sockfd, const void *msg, int size);/* 2 */
 
 // udp generic functions
 
+int socket_udp_default();
 int udp_send(int sockfd, const void* msg, int len, int flags, const SA* to, int tolen);
 int udp_recv(int sockfd, void *msg, int len, int flags, SA* from, int *fromlen);
 

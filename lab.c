@@ -108,6 +108,14 @@ void server_write_intarr(int clientfd, int sockfd, int *arr, int n) {
 		server_write_int(clientfd, sockfd,arr[i]);
 }
 
+int socket_tcp_default() {
+	return socket_s(AF_INET, SOCK_STREAM, 0);
+}
+
+int socket_udp_default() {
+	return socket_s(AF_INET, SOCK_DGRAM, 0);
+}
+
 int udp_send(int sockfd, const void* msg, int len, int flags, const SA* to, int tolen) {
 	int status = sendto(sockfd, msg, len, flags, to, tolen);
 	if(status < 0) error_c(sockfd);
