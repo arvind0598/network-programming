@@ -18,7 +18,7 @@ int replace_in_file(char *filename, char *old_word, char *new_word) {
 }
 
 int sort_file_ascii(char *filename) {
-	char command[50];
+	char command[100];
 	sprintf(command, "cat %s | grep -o . | sort | tr -d '\n' > %s", filename, filename);
 	system(command);
 	return 1;
