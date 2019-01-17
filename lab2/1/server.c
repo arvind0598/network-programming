@@ -33,20 +33,20 @@ int main() {
 			}
 			// replace
 			case 2: {
-                char old_word[BUFF_SIZE];
-                server_read_str(clientfd, sockfd, old_word);
-                char new_word[BUFF_SIZE];
-                server_read_str(clientfd, sockfd, new_word);
-                status = replace_in_file(filename, old_word, new_word);
-                server_write_int(clientfd, sockfd, status);
-                break;
-            }
+				char old_word[BUFF_SIZE];
+				server_read_str(clientfd, sockfd, old_word);
+				char new_word[BUFF_SIZE];
+				server_read_str(clientfd, sockfd, new_word);
+				status = replace_in_file(filename, old_word, new_word);
+				server_write_int(clientfd, sockfd, status);
+				break;
+			}
 			// reorder
 			case 3: {
-                status = sort_file_ascii(filename);
-                server_write_int(clientfd, sockfd, status);
-                break;
-            }
+				status = sort_file_ascii(filename);
+				server_write_int(clientfd, sockfd, status);
+				break;
+			}
 			// exit
 			default: exit = 1;
 		}
