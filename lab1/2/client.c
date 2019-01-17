@@ -20,7 +20,7 @@ int main() {
 			printf("The string is not a palindrome.\n");
 		}
 		else {
-			printf("The string is a palindrome of length %d\n. Vowel frequency:\n", obj.status);
+			printf("The string is a palindrome of length %d.\n Vowel frequency:\n", obj.status);
 			SHOW(obj.vowels, 5);
 		}
 	}
