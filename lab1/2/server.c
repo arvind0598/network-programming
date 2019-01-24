@@ -14,7 +14,7 @@ void count_vowels(int *x, char *a) {
 
 	int n = strlen(a);
 	for(int i = 0; i < n; i++) {
-		if(a[i] == 'a' || a[i] == 'A') x[0]++;
+		if(a[i] | 32 == 'A') x[0]++;
 		else if(a[i] == 'e' || a[i] == 'E') x[1]++;
 		else if(a[i] == 'i' || a[i] == 'I') x[2]++;
 		else if(a[i] == 'o' || a[i] == 'O') x[3]++;
