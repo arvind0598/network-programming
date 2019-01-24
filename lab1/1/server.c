@@ -8,10 +8,6 @@ int search_arr(int *arr, int x, int n) {
 	return pos;
 }
 
-int compare_int(const void *a, const void *b) {
-	return *(const int*)a - *(const int*)b;
-}
-
 int *sort_arr(int *arr, int n) {
 	int *a = malloc(n * sizeof(int));
 	memcpy(a, arr, n * sizeof(int));

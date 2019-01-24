@@ -225,3 +225,9 @@ void server_write(int clientfd, int sockfd, const void *msg, int size) {
 	int status = write(clientfd, msg, size);
 	if(status < 0) error_c2(clientfd, sockfd);
 }
+
+/* 3 */
+
+int compare_int(const void *a, const void *b) {
+	return *(const int*)a - *(const int*)b;
+}

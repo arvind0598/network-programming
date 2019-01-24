@@ -13,7 +13,7 @@
 #include <fcntl.h>/* 2 */
 #include <ctype.h>/* 2 */
 
-#define PORT 5052
+#define PORT 5053
 #define BUFF_SIZE 100
 #define SHOW(a, n) for(int i = 0; i < n; i++) printf("%d ", a[i]); printf("\n")
 #define SWAP(a,b) if(a!=b) {a^= b; b^=a; a^=b;}
@@ -93,6 +93,7 @@ SA_IN sa_client_default();
 // utitilies
 
 int *stdin_get_intarr(int n);
+int compare_int(const void *a, const void *b); /* 1 but 3 */
 void stdin_get_str(char *buffer);/* 2 */
 int value_of(char *str);/* 2 */
 int get_popen_result(char *command);/* 2 */
