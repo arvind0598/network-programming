@@ -13,7 +13,7 @@
 #include <fcntl.h>/* 2 */
 #include <ctype.h>/* 2 */
 
-#define PORT 5053
+#define PORT 5055
 #define BUFF_SIZE 100
 #define SHOW(a, n) for(int i = 0; i < n; i++) printf("%d ", a[i]); printf("\n")
 #define SWAP(a,b) if(a!=b) {a^= b; b^=a; a^=b;}
