@@ -15,7 +15,7 @@ int main() {
   if(parent < 0) error_c2(clientfd, sockfd);
   
   if(parent) {
-    printf("The parent p_id is %d\n", parent);
+    printf("The parent p_id is %d\n", getpid());
     while(1) {
       server_read_str(clientfd, sockfd, buffer);
       if(!strcmp(buffer, "stop")) break;
@@ -23,7 +23,7 @@ int main() {
     }
   }
   else {
-    printf("The child p_id is %d\n", parent);
+    printf("The child p_id is %d\n", getpid());
     while(1) {
       stdin_get_str(buffer);
       server_write_str(clientfd, sockfd, buffer);
