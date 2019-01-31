@@ -11,9 +11,14 @@ int main() {
 	  udp_send(sockfd, buffer, sizeof(buffer), 0, (SA *)&server, server_len);
     if(!strcmp(buffer, "stop")) break;    
     
-    udp_recv(sockfd, buffer, BUFF_SIZE, 0, (SA*)&server, &server_len);
-    if(!strcmp(buffer, "stop")) break;    
-    puts(buffer);
+    while(1) {
+      udp_recv(sockfd, buffer, BUFF_SIZE, 0, (SA*)&server, &server_len);
+      if(!strcmp(buffer, "????")) {
+        printf("\n");
+        break;
+      }
+      printf("%s ", buffer);
+    }
   }
 
   close(sockfd);
