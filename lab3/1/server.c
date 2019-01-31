@@ -18,7 +18,10 @@ int main() {
     printf("The parent p_id is %d\n", getpid());
     while(1) {
       server_read_str(clientfd, sockfd, buffer);
-      if(!strcmp(buffer, "stop")) break;
+      if(!strcmp(buffer, "stop")) {
+        server_write_str(clientfd, sockfd, "stop");
+        break;
+      }
       puts(buffer);
     }
   }
