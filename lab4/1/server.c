@@ -1,17 +1,5 @@
 #include "../server.h"
 
-void print_student_details(struct lab4_q1 student) {
-  printf("\nStudent details:\n");
-  printf("Name: %s\n", student.name);
-  printf("Address: %s\n", student.address);
-  printf("Studying in %s %d %c\n", student.dept, student.sem, student.section);
-  printf("Enrolled courses are:\n");
-  for(int i = 0; i < student.course_codes_length; i++) {
-    printf("%d ", student.course_codes[i]);
-  }
-  printf("\n");
-}
-
 int main() {
 
   // setup database

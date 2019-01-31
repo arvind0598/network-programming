@@ -17,15 +17,9 @@ void strrev(char *str) {
 
 void strsort(char *str) {
   int n = strlen(str);
-  for (int i = 0; i < n - 1; i++) {
-    for (int j = i + 1; j < n; j++) {
-      if (str[i] > str[j]) {
-        char temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-      }
-    }
-  }
+  for (int i = 0; i < n - 1; i++)
+    for (int j = i + 1; j < n; j++)
+      if (str[i] > str[j]) SWAP(str[i], str[j]);
 }
 
 void sort_string(char *str, enum options opt) {
