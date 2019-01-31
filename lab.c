@@ -22,6 +22,10 @@ int socket_s(int family, int type, int protocol) {
 	int sockfd = socket(family, type, protocol);
 	if(sockfd < 0) error();
 	else printf("Socket created.\n");
+
+	if(setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &(int){ 1 }, sizeof(int)) < 0)
+		printf("Unable to set SO_REUSEADDR");
+
 	return sockfd;
 }
 
