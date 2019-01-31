@@ -13,8 +13,9 @@
 #include <fcntl.h>/* 2 */
 #include <ctype.h>/* 2 */
 
-#define PORT 5055
-#define BUFF_SIZE 100
+#define PORT 5059
+#define AGENT_PORT 7880/* 4 */
+#define BUFF_SIZE 500
 #define SHOW(a, n) for(int i = 0; i < n; i++) printf("%d ", a[i]); printf("\n")
 #define SWAP(a,b) if(a!=b) {a^= b; b^=a; a^=b;}
 
@@ -32,6 +33,21 @@ struct lab2_qa1 {
     int length;
     // alphabets lines spaces digits others
     int data[5];
+};
+
+struct lab4_q1 {
+    int id;
+
+    char regno[10];
+    char name[20];
+    char address[100];
+
+    char dept[10];
+    int sem;
+    char section;
+
+    int course_codes_length;
+    int course_codes[10];
 };
 
 // error handling
