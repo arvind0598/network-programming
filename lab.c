@@ -159,7 +159,8 @@ int *stdin_get_intarr(int n) {
 /* lab 2 */
 
 void stdin_get_str(char *buffer) {
-	scanf("%s", buffer);
+	// scanf("%s", buffer);
+	fgets(buffer, BUFF_SIZE, stdin);
 }
 
 void client_read_str(int sockfd, char *buffer) {
