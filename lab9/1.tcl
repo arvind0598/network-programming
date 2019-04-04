@@ -102,7 +102,7 @@ set ftp [new Application/FTP]
 $ftp attach-agent $tcp
 $ns at 10.0 "$ftp start"
 
-# setup udp 0 2
+# setup udp 0 9
 set udp [new Agent/UDP]
 set null [new Agent/Null]
 $ns attach-agent $node_(0) $udp
