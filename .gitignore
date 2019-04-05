@@ -1,5 +1,7 @@
 *.pdf
 *.txt
+*.nam
+*.tr
 server
 client
 agent
